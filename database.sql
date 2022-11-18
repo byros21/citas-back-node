@@ -1,0 +1,19 @@
+
+CREATE TABLE `mascotas` (
+	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(64) NOT NULL,
+	`propietario` VARCHAR(64) NOT NULL,
+	`email` VARCHAR(64) NULL DEFAULT NULL,
+	`fecha` DATETIME NOT NULL,
+	`sintomas` VARCHAR(256) NOT NULL,
+	`especie` INT(11) NOT NULL DEFAULT 1,
+	PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `especie` (
+	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(64) NOT NULL,
+	`caracteristicas` VARCHAR(256) NOT NULL,
+	PRIMARY KEY (`id`)
+);
