@@ -8,8 +8,6 @@ router.get("/list", getMascota);
 
 router.get("/:id", getMascota);
 
-router.post("/:id", getMascota);
-
 router.post("/", setMascota);
 
 router.put("/", setMascota);

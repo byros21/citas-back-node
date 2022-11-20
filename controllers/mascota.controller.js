@@ -1,16 +1,11 @@
 
 const { response, request } = require('express');
 const mysql = require("mysql");
-const { isNumberObject } = require('util/types');
 const conexion = mysql.createConnection(JSON.parse(process.env.CONEXION));
 
 //  LIST PACIENTES
 const getMascota = (req, res = response) => {
     const id = req.params.id || -1;
-    //console.log((id, req.url));
-    // if(!isNumberObject(id) && req.params.id!=='list'){
-    //     return res.redirect('back')
-    // }
     sqlGetMascota(conexion, id, (result) => {
         res.send(result.length ? result : "no existen datos");
     })
@@ -69,7 +64,6 @@ const deleteMascota = (req = request, res = response) => {
 }
 const sqlDelMascota = (conexion, id, callback) => {
     let strSql = `DELETE FROM mascotas  WHERE id = ${id} `;
-    //console.log(strSql)
     conexion.query(strSql, (err, result) => {
         if (err)
             throw err;

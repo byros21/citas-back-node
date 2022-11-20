@@ -5,17 +5,17 @@ const conexion = mysql.createConnection(JSON.parse(process.env.CONEXION));
 
 //  LIST PACIENTES
 const getEspecie = (req, res = response) => {
-    const id = req.params.id;
+    const id = req.params.id || -1;
     sqlGetEspecie(conexion, id, (result) => {
-        res.send(result.length?result : "no existen datos");
+        res.send(result.length ? result : "no existen datos");
     })
 
 }
-const sqlGetEspecie = (conexion,id ,callback) => {
-    //console.log( conexion );
-    let strSql = (id >= 0)? 
-                `SELECT * FROM especie WHERE id='${id}' ; `:
-                `SELECT * FROM especie ORDER BY id ASC; `;
+const sqlGetEspecie = (conexion, id, callback) => {
+    let strSql = `SELECT * FROM especie WHERE id='${id}' ;`
+    if (id == -1) {
+        strSql = `SELECT * FROM especie ORDER BY id ASC; `;
+    }
     conexion.query(strSql, (err, result) => {
         if (err)
             throw err;
@@ -61,7 +61,6 @@ const deleteEspecie = (req = request, res = response) => {
 }
 const sqlDelEspecie = (conexion, id, callback) => {
     let strSql = `DELETE FROM especie  WHERE id = ${id} `;
-    //console.log(strSql)
     conexion.query(strSql, (err, result) => {
         if (err)
             throw err;
