@@ -26,10 +26,13 @@ const sqlGetEspecie = (conexion, id, callback) => {
 //  ADD-UPDATE PACIENTE
 const setEspecie = (req = request, res = response) => {
     const especie = req.body;
-    sqlSetEspecie(conexion, especie, (result) => {
-        res.send(result);
-    })
-
+    if (especie.nombre && especie.caracteristicas ) {
+        sqlSetEspecie(conexion, especie, (result) => {
+            res.send(result);
+        })
+    } else {
+        res.send('informacion de especie imcompleta');
+    }
 }
 const sqlSetEspecie = (conexion, especie, callback) => {
     let strSql = '';

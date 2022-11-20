@@ -15,7 +15,7 @@ const sqlGetMascota = (conexion, id, callback) => {
     let strSql = `SELECT * FROM mascotas WHERE id='${id}' ;`
     if (id == -1) {
         strSql = `SELECT * FROM mascotas ORDER BY fecha DESC; `;
-    } 
+    }
     conexion.query(strSql, (err, result) => {
         if (err)
             throw err;
@@ -26,9 +26,13 @@ const sqlGetMascota = (conexion, id, callback) => {
 //  ADD-UPDATE PACIENTE
 const setMascota = (req = request, res = response) => {
     const mascota = req.body;
-    sqlSetMascota(conexion, mascota, (result) => {
-        res.send(result);
-    })
+    if (mascota.nombre && mascota.propietario && mascota.email && mascota.fecha && mascota.sintomas) {
+        sqlSetMascota(conexion, mascota, (result) => {
+            res.send(result);
+        })
+    }else{
+        res.send( 'informacion de paciente imcompleta' );
+    }
 
 }
 const sqlSetMascota = (conexion, mascota, callback) => {
