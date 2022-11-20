@@ -2,9 +2,9 @@
   "name": "citas-node",
   "version": "1.0.0",
   "description": "api node backend citas",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js --dev",
+    "start": "node app.js --dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Byron Rosero O.",
