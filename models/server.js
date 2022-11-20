@@ -41,6 +41,7 @@ class Server {
         });
 
         this.app.use(dirMascota, require('../routes/mascota'))
+        this.app.use(dirEspecie, require('../routes/especie'))
 
     }
 
