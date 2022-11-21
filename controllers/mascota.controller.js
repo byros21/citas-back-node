@@ -30,8 +30,8 @@ const setMascota = (req = request, res = response) => {
         sqlSetMascota(conexion, mascota, (result) => {
             res.send(result);
         })
-    }else{
-        res.send( 'informacion de paciente imcompleta' );
+    } else {
+        res.send('informacion de paciente imcompleta');
     }
 
 }
@@ -46,6 +46,7 @@ const sqlSetMascota = (conexion, mascota, callback) => {
             + `fecha = "${mascota['fecha']}" , `
             + `sintomas = "${mascota['sintomas']}" `
             + ` WHERE id = ${mascota['id']} `;
+        console.log('**editado mascota');
     } else {
         strSql =
             " INSERT INTO mascotas (nombre, propietario, email, fecha, sintomas) " +

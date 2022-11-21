@@ -42,7 +42,6 @@ const sqlSetEspecie = (conexion, especie, callback) => {
             + `nombre = "${especie['nombre']}" , `
             + `caracteristicas = "${especie['caracteristicas']}" , `
             + `imagen = "${especie['imagen']}"  WHERE id = ${especie['id']} `;
-            console.log( '**editado mascota');
     } else {
         strSql =
             " INSERT INTO especie (nombre, caracteristicas, imagen) " +
