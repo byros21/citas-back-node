@@ -46,7 +46,7 @@ const sqlSetMascota = (conexion, mascota, callback) => {
             + `fecha = "${mascota['fecha']}" , `
             + `sintomas = "${mascota['sintomas']}" `
             + ` WHERE id = ${mascota['id']} `;
-        console.log('**editado mascota');
+        console.log('editado mascota -> ' + mascota['nombre']);
     } else {
         strSql =
             " INSERT INTO mascotas (nombre, propietario, email, fecha, sintomas) " +
